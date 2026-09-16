@@ -31,3 +31,14 @@ class Linear(Module):
             -LIMIT, LIMIT, size=(in_features, out_features)
         )
         self.b = np.zeros(out_features)
+
+    def forward(self, x: np.ndarray) -> np.ndarray:
+        """Compute this layer's output for a batch of inputs.
+
+        Args:
+            x (np.ndarray): input, shape (batch_size, in_features).
+
+        Returns:
+        np.ndarray: output, shape (batch_size, out_features).
+        """
+        return np.matmul(x, self.W) + self.b
