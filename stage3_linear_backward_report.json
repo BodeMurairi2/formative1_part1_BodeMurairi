@@ -1,21 +1,25 @@
 {
-  "stage": 1,
-  "title": "Linear: __init__ & forward",
+  "stage": 3,
+  "title": "Linear.backward & parameters",
   "target": "nn/layers/linear.py",
   "python": "3.11.16",
   "numpy": "2.4.6",
   "categories": {
-    "A_construction": {
-      "passed": 5,
-      "total": 5
+    "A_gradient": {
+      "passed": 1,
+      "total": 1
     },
-    "C_output": {
-      "passed": 2,
-      "total": 2
+    "B_value": {
+      "passed": 1,
+      "total": 1
     },
-    "D_value": {
-      "passed": 2,
-      "total": 2
+    "C_gradient": {
+      "passed": 1,
+      "total": 1
+    },
+    "E_parameters()": {
+      "passed": 1,
+      "total": 1
     },
     "F_purity": {
       "passed": 1,
@@ -23,8 +27,8 @@
     }
   },
   "total": {
-    "passed": 10,
-    "total": 10
+    "passed": 5,
+    "total": 5
   },
   "lint": {
     "tool": "ruff",
