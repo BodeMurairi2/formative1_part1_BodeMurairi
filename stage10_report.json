@@ -6,20 +6,20 @@
   "numpy": "2.4.6",
   "categories": {
     "A_interface": {
-      "passed": 0,
+      "passed": 1,
       "total": 1
     },
     "B_loss": {
-      "passed": 0,
+      "passed": 1,
       "total": 1
     },
     "C_accuracy": {
-      "passed": 0,
+      "passed": 1,
       "total": 1
     }
   },
   "total": {
-    "passed": 0,
+    "passed": 3,
     "total": 3
   },
   "lint": {
@@ -28,22 +28,6 @@
     "clean": true,
     "output": "All checks passed!"
   },
-  "verdict": "BLOCKED",
-  "failures": [
-    {
-      "category": "A",
-      "test": "test_required_symbols_exist",
-      "message": "AttributeError: module 'main' has no attribute 'toy_data'"
-    },
-    {
-      "category": "B",
-      "test": "test_train_returns_decreasing_loss_history",
-      "message": "AttributeError: module 'main' has no attribute 'train'"
-    },
-    {
-      "category": "C",
-      "test": "test_final_accuracy_crosses_threshold",
-      "message": "AttributeError: module 'main' has no attribute 'train'"
-    }
-  ]
+  "verdict": "PASS",
+  "failures": []
 }
