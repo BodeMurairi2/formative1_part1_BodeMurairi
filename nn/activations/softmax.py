@@ -24,13 +24,14 @@ class Softmax(Module):
         Each row sums to 1.
         """
         z = x
-        return (np.exp(z - np.max(z, keepdims=True, axis=1))) / (
+        self.probabilities = (np.exp(z - np.max(z, keepdims=True, axis=1))) / (
             np.sum(
                 np.exp(z - np.max(z, keepdims=True, axis=1)),
                 keepdims=True,
                 axis=1,
             )
         )
+        return self.probabilities
 
     def backward(self, grad_output: np.ndarray) -> np.ndarray:
         """Compute gradients given the upstream gradient.
@@ -45,5 +46,5 @@ class Softmax(Module):
         this layer's input (the logits), shape
         (batch_size, C).
         """
-        # TODO: implement in a later chapter -- leave as-is
-        pass
+        row_dot = np.sum(grad_output * self.probabilities, axis=1, keepdims=True)
+        return self.probabilities * (grad_output - row_dot)
