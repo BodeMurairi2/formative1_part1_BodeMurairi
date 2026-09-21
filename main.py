@@ -97,8 +97,31 @@ def accuracy(loss_history:list[float] = None) -> float:
     return float(correct.sum()/correct.size)
 
 if __name__ == "__main__":
-    print("Classifier built with NN")
-    model = train()
-    model_accuracy = accuracy()
-    print(f"Final Model Accuracy is {model_accuracy}")
-    print(f"Loss: {model}")
+    epochs, lr = 4000, 1.0
+    print(f"Training on the AND dataset ({epochs} epochs, lr={lr})")
+    history = train(epochs=epochs, lr=lr)
+    print("Training finished.\n")
+
+    prompt = "Show losses: [f]irst 5, [l]ast 5, [a]ll, [n]one (default n): "
+    choice = input(prompt).strip().lower()
+    numbered = list(enumerate(history, start=1))
+    if choice == "f":
+        shown = numbered[:5]
+    elif choice == "l":
+        shown = numbered[-5:]
+    elif choice == "a":
+        shown = numbered
+    else:
+        shown = []
+
+    for epoch, loss in shown:
+        print(f"epoch {epoch:<5} loss {loss:.6f}")
+    if shown:
+        print()
+
+    x, y = toy_data()
+    predictions = (sigmoid.forward(linear.forward(x)) > 0.5).astype(int)
+    for i in range(len(x)):
+        print(f"sample {i + 1}: class {int(y[i, 0])}, pred {predictions[i, 0]}")
+
+    print(f"\nAccuracy: {accuracy()}")
